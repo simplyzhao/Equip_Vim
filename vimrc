@@ -23,6 +23,7 @@ Bundle 'ctrlp.vim'
 Bundle 'snipMate'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
+Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'simplyzhao/cscope_maps.vim.git'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -41,7 +42,6 @@ set textwidth=80          " each line contains maximum 80 characters
 set wrap                  " auto wrap
 set history=80            " remember more commands and search history
 set undolevels=256        " use a large undo buffer
-set t_Co=256              " ONLY set this on Console Vim,rather than Gvim
 " strips off <Shift> for each Vim command
 nnoremap ; :
 
@@ -119,3 +119,9 @@ nmap tl :TlistToggle<cr>
 let g:NERDTree_title="[NERDTree]"
 let g:NERDTreeDirArrows=0
 nmap nd :NERDTreeToggle<cr>
+
+" vim-powerline
+set t_Co=256
+set encoding=utf-8
+set laststatus=2
+let g:Powerline_symbols = 'unicode'
