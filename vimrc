@@ -44,6 +44,8 @@ set textwidth=80          " each line contains maximum 80 characters
 set wrap                  " auto wrap
 set history=80            " remember more commands and search history
 set undolevels=256        " use a large undo buffer
+" characters to fill the statuslines and vertical separators
+set fillchars=vert:\ ,stl:\ ,stlnc:\
 " strips off <Shift> for each Vim command
 nnoremap ; :
 
@@ -51,6 +53,7 @@ nnoremap ; :
 " Search Setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch              " highlight search terms
+set ignorecase            " ignore case when searching
 set smartcase             " ignore case if search pattern is all lowercase, case-sensitive otherwise
 " clears the search buffer when you press ,/
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -129,9 +132,11 @@ set laststatus=2
 let g:Powerline_symbols = 'unicode'
 
 " ctrlp 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_max_height = 24
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 18000
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
