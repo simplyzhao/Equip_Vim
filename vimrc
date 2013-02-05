@@ -23,6 +23,8 @@ Bundle 'ctrlp.vim'
 Bundle 'snipMate'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'simplyzhao/cscope_maps.vim.git'
 
@@ -125,3 +127,11 @@ set t_Co=256
 set encoding=utf-8
 set laststatus=2
 let g:Powerline_symbols = 'unicode'
+
+" ctrlp 
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_max_height = 24
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_files = 18000
+let g:ctrlp_follow_symlinks = 1
