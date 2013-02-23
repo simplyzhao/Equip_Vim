@@ -23,6 +23,8 @@ Bundle 'ctrlp.vim'
 Bundle 'snipMate'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
+Bundle 'L9'
+Bundle 'neocomplcache'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline.git'
@@ -45,7 +47,7 @@ set wrap                  " auto wrap
 set history=80            " remember more commands and search history
 set undolevels=256        " use a large undo buffer
 " characters to fill the statuslines and vertical separators
-set fillchars=vert:\ ,stl:\ ,stlnc:\
+" set fillchars=vert:\ ,stl:\ ,stlnc:\
 " strips off <Shift> for each Vim command
 nnoremap ; :
 
@@ -140,3 +142,21 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 18000
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_auto_select = 1
+"<CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+"<TAB>: completion. NO USE with snipmate
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"<C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-Y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><Enter>  pumvisible() ? "\<C-Y>" : "\<Enter>"
