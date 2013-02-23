@@ -150,13 +150,15 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_enable_auto_select = 1
-"<CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-"<TAB>: completion. NO USE with snipmate
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" <TAB>: completion. Comment out this, reserved <TAB> for snipMate
 "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"<C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-Y>  neocomplcache#close_popup()
+inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-inoremap <expr><Enter>  pumvisible() ? "\<C-Y>" : "\<Enter>"
+inoremap <expr><Enter>  pumvisible() ? "\<C-y>" : "\<Enter>"
+" Enable heavy omni completion, which require computational power and may stall the vim. 
+if !exists('g:neocomplcache_omni_patterns')
+   let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
