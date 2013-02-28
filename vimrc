@@ -18,17 +18,17 @@ Bundle 'gmarik/vundle'
 
 " Bundle 
 Bundle 'wombat256.vim'
+Bundle 'L9'
 Bundle 'AutoClose'
 Bundle 'ctrlp.vim'
 Bundle 'snipMate'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
-Bundle 'L9'
-Bundle 'neocomplcache'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'simplyzhao/cscope_maps.vim.git'
+Bundle 'Rip-Rip/clang-complete'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Setting
@@ -143,22 +143,8 @@ let g:ctrlp_max_files = 18000
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" <TAB>: completion. Comment out this, reserved <TAB> for snipMate
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-inoremap <expr><Enter>  pumvisible() ? "\<C-y>" : "\<Enter>"
-" Enable heavy omni completion, which require computational power and may stall the vim. 
-if !exists('g:neocomplcache_omni_patterns')
-   let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+" clang-complete
+set completeopt=longest,menu
+let g:clang_library_path = '/usr/lib/'
+let g:clang_use_library = 1
+let g:clang_auto_select = 0
