@@ -19,7 +19,7 @@ Bundle 'gmarik/vundle'
 " Bundle 
 Bundle 'wombat256.vim'
 Bundle 'L9'
-Bundle 'AutoClose'
+Bundle 'Townk/vim-autoclose'
 Bundle 'ctrlp.vim'
 Bundle 'snipMate'
 Bundle 'The-NERD-tree'
@@ -28,7 +28,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'simplyzhao/cscope_maps.vim.git'
-Bundle 'Rip-Rip/clang-complete'
+Bundle 'Rip-Rip/clang_complete'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Setting
