@@ -29,6 +29,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'simplyzhao/cscope_maps.vim.git'
 Bundle 'Rip-Rip/clang_complete'
+Bundle 'nsf/gocode', {'rtp': 'vim/'}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Setting
@@ -63,6 +64,10 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File and Edit Setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Add golang support
+set rtp+=$GOROOT/misc/vim
+
 syntax on                 " enable syntax
 filetype plugin indent on " enable detection, plugins and indenting in one step
 set expandtab             " always replace <tab> with spaces
@@ -97,6 +102,15 @@ autocmd FileType c,cpp  map <buffer> <leader><space> :w<cr>:make<cr>
 nmap <leader>cn :cn<cr>
 nmap <leader>cp :cp<cr>
 nmap <leader>cw :cw 10<cr>
+
+" intelligent Ctrl-Space remap
+" http://stackoverflow.com/questions/510503/ctrlspace-for-omni-and-keyword-completion-in-vim
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+            \ "\<lt>C-n>" :
+            \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Setting
@@ -147,4 +161,3 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 set completeopt=longest,menu
 let g:clang_library_path = '/usr/lib/'
 let g:clang_use_library = 1
-let g:clang_auto_select = 0
