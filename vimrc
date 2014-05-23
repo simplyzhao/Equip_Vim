@@ -4,7 +4,7 @@
 " Email:  simplyzhao@gmail.com
 " ############################################################################
 
-let mapleader = ","		  " change the mapleader from \ to ,
+let mapleader = ","       " change the mapleader from \ to ,
 syntax on                 " enable syntax
 
 " ============================================================================
@@ -36,7 +36,7 @@ set background=dark
 colorscheme solarized     " colorscheme
 set t_Co=256
 
-set number		          " always show line numbers
+set number                " always show line numbers
 set ruler                 " show the line and column number
 
 set textwidth=80          " each line contains maximum 80 characters
