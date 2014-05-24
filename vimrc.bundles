@@ -1,9 +1,8 @@
 " ############################################################################
 "                              .vimrc.bundle
-" Author: Alex Zhao 
+" Author: Alex Zhao
 " Email:  simplyzhao@gmail.com
 " ############################################################################
-
 
 " Use vim settings, rather then vi settings (much better!)
 " This must be first, because it changes other options as a side effect.
@@ -13,7 +12,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " let Vundle manage Bundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " ============================================================================
@@ -39,28 +38,52 @@ let g:syntastic_python_checkers=['pyflakes']
 highlight SyntasticErrorSign guifg=white guibg=black
 
 Bundle 'Valloric/YouCompleteMe'
-let g:ycm_key_list_select_completion=['<Down>']
-let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_key_list_select_completion=['<TAB>', '<c-n>']
+let g:ycm_key_list_previous_completion=['<S-TAB>', '<c-p>']
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-let g:ycm_key_invoke_completion='<C-Space>'
+let g:ycm_key_invoke_completion='<S-Space>'
+let g:ycm_always_populate_location_list=1
+let g:ycm_filetype_blacklist={
+    \ 'tagbar' : 1,
+    \ 'gitcommit' : 1,
+    \}
+nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 
-Bundle 'taglist.vim'
-let Tlist_Sort_Type="name"
-let Tlist_Use_Right_Window=1
-let Tlist_Exist_OnlyWindow=1
-let Tlist_Show_One_File=1   
-let Tlist_Use_SingleClick=1 
-nmap tl :TlistToggle<cr>
+" auto closing of quotes, parenthesis, brackets, etc.
+Bundle 'Raimondi/delimitMate'
+" for python docstring
+au FileType python let b:delimitMate_nesting_quotes=['"']
+
+" HTML/XML auto closing(tags)
+Bundle 'docunext/closetag.vim'
+let g:closetag_html_style=1
+
+" easily delete, change and add surroundings in pairs
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+
+" easily align '=' and ':'
+Bundle 'godlygeek/tabular'
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
 
 Bundle 'The-NERD-tree'
 let g:NERDTree_title="[NERDTree]"
 let g:NERDTreeDirArrows=0
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$']
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 nmap nd :NERDTreeToggle<cr>
 
+Bundle 'scrooloose/nerdcommenter'
+
+" git
 Bundle 'tpope/vim-fugitive'
 
 Bundle 'kien/ctrlp.vim'
@@ -80,3 +103,6 @@ let g:ctrlp_follow_symlinks=1
 
 Bundle 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
+
+" statusline
+Bundle 'bling/vim-airline'

@@ -45,6 +45,9 @@ set wildmenu
 " files ignored
 set wildignore=*.o,*~,*.pyc,*.class
 
+" Always show the status line
+set laststatus=2
+
 " ============================================================================
 " Display Setting
 " ============================================================================
