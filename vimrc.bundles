@@ -77,3 +77,6 @@ let g:ctrlp_max_height=24
 let g:ctrlp_by_filename=1
 let g:ctrlp_max_files=18000
 let g:ctrlp_follow_symlinks=1
+
+Bundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
